@@ -1,0 +1,41 @@
+<div class="container-2">
+  <h1 class="text-center mb-5"><strong>Manger gras</strong></h1>
+
+  <div class="m-auto rounded" id="list_resto">
+    <ul class="text-align-left list-unstyled">
+      <% @restaurants.each do |resto| %>
+        <li class="mt-2">
+          <strong>
+            <%= link_to resto.name, restaurant_path(resto) %>
+          </strong>
+          <span> - <em>
+            <%= resto.address %>
+              </em>
+            - (<%= resto.phone_number %>)
+          </span></%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="m-auto rounded row">
+      <% @restaurants.each do |resto| %>
+
+        <div class="card col-3 m-3">
+          <img class="card-img-top" src="https://www.edreams.fr/blog/wp-content/uploads/sites/6/2013/10/shutterstock_1042862479-min.jpg" alt=<% resto.name %>>
+          <div class="card-body">
+            <h5 class="card-title"><%= resto.name %></h5>
+            <p class="card-text"><strong><%= resto.category %></strong> - <%= resto.address %> - <em><%= resto.phone_number %></em></p>
+            <%= link_to 'View', restaurant_path(resto), class: "btn btn-info" %>
+          </div>
+        </div>
+
+      <% end %>
+  </div>
+
+  <div class="text-center mt-5">
+    <%= link_to 'Add a Restaurant', new_restaurant_path, class: "btn btn-info" %>
+  </div>
+</div>
+
+
